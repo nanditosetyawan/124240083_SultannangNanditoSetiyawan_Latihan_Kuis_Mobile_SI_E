@@ -1,6 +1,5 @@
-// [ENTRY-POINT] - Titik mulai aplikasi, jalankan RootHalaman
 import 'package:flutter/material.dart';
-import 'root.dart';
+import 'halaman_login.dart'; // ← Halaman login membuka RootHalaman setelah berhasil
 
 void main() => runApp(const AplikasiResto());
 
@@ -17,7 +16,7 @@ class AplikasiResto extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: RootHalaman(),                    // ← halaman pertama dibuka
+      home: HalamanLogin(),                   // ← Ganti ke halaman login dulu
     );
   }
 }

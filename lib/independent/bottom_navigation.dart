@@ -1,41 +1,51 @@
 import 'package:flutter/material.dart';
 
-// ═════════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════════
 // FILE: lib/independent/bottom_navigation.dart
 // 📌 FUNGSI: Bottom Navigation Bar (Tab Menu Resto & Tab Profil)
 //
-// 🎯 LOKASI TEMPEL DI FILE TUJUAN (`root.dart`):
-//    Di file `root.dart` -> Pada properti `bottomNavigationBar:` di Scaffold.
-//
-// ═════════════════════════════════════════════════════════════════════════════
-// ❓ JAWABAN SINGKAT: APAKAH KATA 'return' DICOPAS?
-// ❌ TIDAK! Kata 'return' TIDAK PERLU DICOPAS!
-//    Cukup copas dari `BottomNavigationBar(` sampai kurung tutup `)` saja.
-//
-// 📌 CONTOH TEMPEL DI `root.dart`:
-//    Scaffold(
-//      body: ...,
-//      bottomNavigationBar: BottomNavigationBar( ← TEMPEL DI SINI
-//        currentIndex: _indeksBottomNav,
-//        onTap: (indeks) => setState(() => _indeksBottomNav = indeks),
-//        items: const [ ... ],
-//      ),
-//    )
-// ═════════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════════
 // 📋 2 CARA PAKAI SAAT KUIS:
 //
-// 🔹 CARA 1 (COPAS SELURUH FILE 100% - TANPA MEMUTUS KODE):
+// 🔹 CARA 1 (COPAS SELURUH FILE 100%):
 //    1. Buat file baru `lib/independent/bottom_navigation.dart` di project kuis.
 //    2. COPAS SELURUH ISI FILE INI DARI BARIS 1 SAMPAI BARIS TERAKHIR.
-//    3. Di `root.dart`, panggil:
+//    3. Di `root.dart`, tambah import dan panggil:
+//
+//       import 'independent/bottom_navigation.dart';
+//       ...
 //       bottomNavigationBar: BottomNavWidget(
-//         indeksAktif: _indeksBottomNav,
-//         onPindahTab: (indeks) => setState(() => _indeksBottomNav = indeks),
+//         indeksAktif: _indeksHalaman,
+//         onPindahTab: (indeks) => setState(() => _indeksHalaman = indeks),
 //       ),
 //
-// 🔹 CARA 2 (JIKA TAMPILKAN LANGSUNG DI ROOT.DART TANPA BUAT FILE BARU):
-//    Copas HANYA blok di bawah ini (Mulai dari `BottomNavigationBar(` sampai `)`).
-// ═════════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════════
+// 🔹 CARA 2 (COPAS POTONGAN KODE LANGSUNG KE root.dart TANPA BUAT FILE BARU):
+//
+//  Saat kuis, template StatefulWidget kosong yang dibuat VS Code seperti ini:
+//
+//  class _RootHalamanState extends State<RootHalaman> {
+//    int _indeksHalaman = 0;  ← WAJIB ADA variabel ini
+//
+//    @override
+//    Widget build(BuildContext context) {
+//      return Scaffold(
+//
+//        body: ...,             ← isi layar utama
+//
+//        bottomNavigationBar:   ← TEMPEL KODE DI SEBELAH KANAN TITIK DUA INI!
+//          BottomNavigationBar( ← ✂️ MULAI COPAS DARI SINI
+//            ...
+//          ),                   ← ✂️ SAMPAI TANDA KOMA INI
+//
+//      );
+//    }
+//  }
+//
+//  JADI: Kata "bottomNavigationBar:" SUDAH ADA DI root.dart.
+//        Yang Anda copas dari file ini HANYA: BottomNavigationBar( ... ),
+//        tanpa kata "return" dan tanpa kata "bottomNavigationBar:".
+// ══════════════════════════════════════════════════════════════════════════════
 
 class BottomNavWidget extends StatelessWidget {
   final int indeksAktif;
@@ -49,36 +59,37 @@ class BottomNavWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    
-    // ⬇️ ✂️ [MULAI COPAS CARA 2 - DARI SINI (KATA 'return' DI ATAS JANGAN DICOPAS)] ✂️ ⬇️
+    return
+
+    // ✂️ MULAI COPAS CARA 2 DARI SINI (tanpa kata 'return' di atas)
     BottomNavigationBar(
-      currentIndex: indeksAktif, // ← Indeks tab aktif (0 = Menu, 1 = Profil)
-      onTap: onPindahTab,         // ← Callback saat tab diklik untuk pindah layar
-      selectedItemColor: Colors.green, // ← EDIT: Warna tab saat aktif
-      unselectedItemColor: Colors.grey, // ← EDIT: Warna tab saat tidak aktif
+      currentIndex: indeksAktif,          // ← Angka tab yang aktif
+      onTap: onPindahTab,                  // ← Callback pindah tab
+      selectedItemColor: Colors.green,    // ← EDIT: Warna tab aktif
+      unselectedItemColor: Colors.grey,   // ← EDIT: Warna tab nonaktif
       type: BottomNavigationBarType.fixed,
       items: const [
-        // ── TAB 1: MENU RESTO ──
+
+        // ── TAB 1 ──
         BottomNavigationBarItem(
           icon: Icon(Icons.restaurant_menu),
-          label: 'Menu Resto', // ← EDIT: Label tab 1
+          label: 'Menu Resto',            // ← EDIT: Label tab 1
         ),
 
-        // ── TAB 2: PROFIL USER ──
+        // ── TAB 2 ──
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
-          label: 'Profil', // ← EDIT: Label tab 2
+          label: 'Profil',               // ← EDIT: Label tab 2
         ),
 
-        // 💡 JIKA KUIS BESOK MINTA TAB KE-3 (CONTOH KERANJANG/PESANAN):
-        // UNCOMMENT (BUKA KOMENTAR) KODE DI BAWAH INI:
+        // 💡 TAB KE-3 (jika kuis butuh): Buka komentar di bawah ini
         // BottomNavigationBarItem(
         //   icon: Icon(Icons.shopping_bag),
         //   label: 'Pesanan',
         // ),
+
       ],
     );
-    // ⬆️ ✂️ [AKHIR COPAS CARA 2 - SAMPAI SINI] ⬆️
+    // ✂️ AKHIR COPAS CARA 2 SAMPAI SINI
   }
 }
