@@ -6,22 +6,18 @@ import '../models/food_item.dart'; // ← Import model makanan
 // 📌 FUNGSI: Detail Makanan + Input Porsi + PROSES HITUNG TOTAL HARGA REALTIME
 //
 // 🎯 LOKASI PASANG DI FILE TUJUAN:
-//    Di file `halaman_detail.dart` -> Dipanggil oleh `list_menu_resto.dart`
-//    saat 1 item makanan diklik (`Navigator.push`).
+//    Dipanggil oleh `list_menu_resto.dart` saat 1 item makanan diklik (`Navigator.push`).
 //
 // ═════════════════════════════════════════════════════════════════════════════
-// 📋 DUA CARA PAKAI / COPAS BESOK SAAT KUIS:
+// ❓ JAWABAN SINGKAT: APAKAH COPAS SELURUH FILE ATAU KODENYA SAJA?
 //
-// ── CARA A (PALING MUDAH - IMPORT CLASS):
-//    1. Di atas file `halaman_detail.dart`, tambahkan:
-//       import 'independent/detail_menu_hitung.dart';
-//    2. Buka halaman detail dengan passing data item:
+// 🔹 COPAS SELURUH FILE 100% (DARI BARIS 1 SAMPAI BARIS TERAKHIR):
+//    1. Buat file baru `lib/independent/detail_menu_hitung.dart` di kuis besok.
+//    2. COPAS SELURUH ISI FILE INI DARI BARIS 1 SAMPAI BARIS TERAKHIR.
+//    3. Buka halaman detail ini saat item makanan diklik:
 //       Navigator.push(context, MaterialPageRoute(
 //         builder: (_) => DetailMenuHitungWidget(item: item),
 //       ));
-//
-// ── CARA B (COPAS KODE LANGSUNG TANPA IMPORT CLASS):
-//    Copas seluruh class Stateful ini atau bagian `SingleChildScrollView(...)` di bawah.
 // ═════════════════════════════════════════════════════════════════════════════
 
 class DetailMenuHitungWidget extends StatefulWidget {
@@ -63,7 +59,7 @@ class _DetailMenuHitungWidgetState extends State<DetailMenuHitungWidget> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // 1. Gambar Besark Makanan
+            // 1. Gambar Besar Makanan
             Image.network(
               widget.item.imageUrl, // ← EDIT: Field foto model
               width: double.infinity,

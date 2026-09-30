@@ -6,15 +6,15 @@ import '../models/food_item.dart'; // ← Import model makanan
 // 📌 FUNGSI: List Makanan / Menu Resto yang Bisa Di-scroll Ke Bawah
 //
 // 🎯 LOKASI PASANG DI FILE TUJUAN:
-//    Di file `halaman_beranda.dart` -> Pada properti `body:` di dalam `Scaffold(...)`
+//    Dipasang di file `halaman_beranda.dart` -> pada properti `body:` di Scaffold.
 //
 // ═════════════════════════════════════════════════════════════════════════════
-// 📋 DUA CARA PAKAI / COPAS BESOK SAAT KUIS:
+// ❓ JAWABAN SINGKAT: APAKAH COPAS SELURUH FILE ATAU KODENYA SAJA?
 //
-// ── CARA A (PALING MUDAH - IMPORT CLASS):
-//    1. Di atas file `halaman_beranda.dart`, tambahkan:
-//       import 'independent/list_menu_resto.dart';
-//    2. Di dalam Scaffold `halaman_beranda.dart`, tulis:
+// 🔹 CARA 1 (COPAS SELURUH FILE 100% - TANPA ADA YANG DIBUANG):
+//    1. Buat file baru `lib/independent/list_menu_resto.dart` di kuis besok.
+//    2. COPAS SELURUH ISI FILE INI DARI BARIS 1 SAMPAI BARIS TERAKHIR.
+//    3. Di `halaman_beranda.dart`, panggil widget ini pada `Scaffold`:
 //       body: ListMenuRestoWidget(
 //         daftarMakanan: FoodItem.daftarMakanan,
 //         onKlikItem: (item) {
@@ -22,110 +22,11 @@ import '../models/food_item.dart'; // ← Import model makanan
 //         },
 //       ),
 //
-// ── CARA B (COPAS KODE LANGSUNG TANPA IMPORT CLASS):
-//    Blok & Copy dari `ListView.builder(` sampai `)` di bawah ini,
-//    lalu paste di sebelah `body:` pada `Scaffold(...)` di `halaman_beranda.dart`.
+// 🔹 CARA 2 (JIKA MALAS BUAT FILE BARU - COPAS POTONGAN KODENYA SAJA):
+//    Copy HANYA blok di bawah ini (dari ListView.builder sampai kurung tutup)
+//    dan tempel di sebelah `body:` pada `halaman_beranda.dart`.
 // ═════════════════════════════════════════════════════════════════════════════
 
-// ⬇️ ✂️ [MULAI COPAS CARA B - DARI SINI] ✂️ ⬇️
-Widget buatListViewMenuResto({
-  required List<FoodItem> daftarMakanan,
-  Function(FoodItem)? onKlikItem,
-}) {
-  return ListView.builder(
-    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-    itemCount: daftarMakanan.length, // ← Jumlah item makanan
-    itemBuilder: (context, indeks) {
-      final item = daftarMakanan[indeks];
-
-      return Card(
-        margin: const EdgeInsets.only(bottom: 12),
-        elevation: 2,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: InkWell(
-          borderRadius: BorderRadius.circular(12),
-          // 📌 AKSI KLIK ITEM -> Pindah ke Halaman Detail
-          onTap: () {
-            if (onKlikItem != null) {
-              onKlikItem(item);
-            }
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Row(
-              children: [
-                // 1. Gambar Makanan
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.network(
-                    item.imageUrl, // ← EDIT: Field foto model
-                    width: 80,
-                    height: 80,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) => Container(
-                      width: 80,
-                      height: 80,
-                      color: Colors.grey[300],
-                      child: const Icon(Icons.fastfood, color: Colors.grey),
-                    ),
-                  ),
-                ),
-
-                const SizedBox(width: 12),
-
-                // 2. Nama, Deskripsi & Harga
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        item.name, // ← EDIT: Field nama model
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        item.description, // ← EDIT: Field deskripsi
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey[600],
-                        ),
-                      ),
-                      const SizedBox(height: 6),
-                      Text(
-                        item.hargaFormatted, // ← EDIT: Format harga
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.green,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                // 3. Chevron Icon
-                const Icon(Icons.chevron_right, color: Colors.grey),
-              ],
-            ),
-          ),
-        ),
-      );
-    },
-  );
-}
-// ⬆️ ✂️ [AKHIR COPAS CARA B - SAMPAI SINI] ⬆️
-
-
-// ─────────────────────────────────────────────────────────────────────────────
-// CLASS WIDGET (Bisa langsung dipakai jika menggunakan CARA A)
-// ─────────────────────────────────────────────────────────────────────────────
 class ListMenuRestoWidget extends StatelessWidget {
   final List<FoodItem> daftarMakanan;
   final Function(FoodItem)? onKlikItem;
@@ -138,9 +39,93 @@ class ListMenuRestoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return buatListViewMenuResto(
-      daftarMakanan: daftarMakanan,
-      onKlikItem: onKlikItem,
+    // ⬇️ ✂️ [POTONGAN KODE - JIKA CARA 2] ✂️ ⬇️
+    return ListView.builder(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      itemCount: daftarMakanan.length, // ← Jumlah item makanan
+      itemBuilder: (context, indeks) {
+        final item = daftarMakanan[indeks];
+
+        return Card(
+          margin: const EdgeInsets.only(bottom: 12),
+          elevation: 2,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(12),
+            onTap: () {
+              if (onKlikItem != null) {
+                onKlikItem!(item);
+              }
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Row(
+                children: [
+                  // 1. Gambar Makanan
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.network(
+                      item.imageUrl, // ← EDIT: Field foto model
+                      width: 80,
+                      height: 80,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) => Container(
+                        width: 80,
+                        height: 80,
+                        color: Colors.grey[300],
+                        child: const Icon(Icons.fastfood, color: Colors.grey),
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(width: 12),
+
+                  // 2. Nama, Deskripsi & Harga
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          item.name, // ← EDIT: Field nama model
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          item.description, // ← EDIT: Field deskripsi
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          item.hargaFormatted, // ← EDIT: Format harga
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.green,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  // 3. Chevron Icon
+                  const Icon(Icons.chevron_right, color: Colors.grey),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
     );
+    // ⬆️ ✂️ [AKHIR POTONGAN KODE] ⬆️
   }
 }
