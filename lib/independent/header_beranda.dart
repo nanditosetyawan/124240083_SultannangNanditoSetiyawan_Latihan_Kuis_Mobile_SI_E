@@ -4,21 +4,34 @@ import 'package:flutter/material.dart';
 // FILE: lib/independent/header_beranda.dart
 // 📌 FUNGSI: Header Resto / AppBar Beranda (Judul + Icon Keranjang & Logout)
 //
-// 🎯 LOKASI PASANG DI FILE TUJUAN:
-//    Dipasang di file `halaman_beranda.dart` -> pada properti `appBar:` di Scaffold.
+// 🎯 LOKASI TEMPEL DI FILE TUJUAN (`halaman_beranda.dart`):
+//    Di file `halaman_beranda.dart` -> Pada properti `appBar:` di Scaffold.
 //
 // ═════════════════════════════════════════════════════════════════════════════
-// ❓ JAWABAN SINGKAT: APAKAH COPAS SELURUH FILE ATAU KODENYA SAJA?
+// ❓ JAWABAN SINGKAT: APAKAH KATA 'return' DICOPAS?
+// ❌ TIDAK! Kata 'return' TIDAK PERLU DICOPAS!
+//    Cukup copas dari `AppBar(` sampai kurung tutup `)` saja.
 //
-// 🔹 CARA 1 (COPAS SELURUH FILE 100% - TANPA ADA YANG DIBUANG):
-//    1. Buat file baru `lib/independent/header_beranda.dart` di kuis besok.
+// 📌 CONTOH TEMPEL DI `halaman_beranda.dart`:
+//    Scaffold(
+//      appBar: AppBar( ← TEMPEL DI SINI SEBELAH KANAN appBar:
+//        title: Text("NourishBowl"),
+//        backgroundColor: Colors.green,
+//        actions: [ ... ],
+//      ),
+//      body: ...,
+//    )
+// ═════════════════════════════════════════════════════════════════════════════
+// 📋 2 CARA PAKAI SAAT KUIS:
+//
+// 🔹 CARA 1 (COPAS SELURUH FILE 100% - TANPA MEMUTUS KODE):
+//    1. Buat file baru `lib/independent/header_beranda.dart` di project kuis.
 //    2. COPAS SELURUH ISI FILE INI DARI BARIS 1 SAMPAI BARIS TERAKHIR.
-//    3. Di `halaman_beranda.dart`, panggil widget ini pada `Scaffold`:
+//    3. Di `halaman_beranda.dart`, panggil:
 //       appBar: const HeaderBerandaWidget(judulResto: "NourishBowl"),
 //
-// 🔹 CARA 2 (JIKA MALAS BUAT FILE BARU - COPAS POTONGAN KODENYA SAJA):
-//    Copy HANYA blok di bawah ini (dari AppBar sampai kurung tutup)
-//    dan tempel di sebelah `appBar:` pada `halaman_beranda.dart`.
+// 🔹 CARA 2 (JIKA TAMPILKAN LANGSUNG DI HALAMAN_BERANDA.DART TANPA BUAT FILE BARU):
+//    Copas HANYA blok di bawah ini (Mulai dari `AppBar(` sampai `)`).
 // ═════════════════════════════════════════════════════════════════════════════
 
 class HeaderBerandaWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -37,8 +50,10 @@ class HeaderBerandaWidget extends StatelessWidget implements PreferredSizeWidget
 
   @override
   Widget build(BuildContext context) {
-    // ⬇️ ✂️ [POTONGAN KODE - JIKA CARA 2] ✂️ ⬇️
-    return AppBar(
+    return 
+
+    // ⬇️ ✂️ [MULAI COPAS CARA 2 - DARI SINI (KATA 'return' DI ATAS JANGAN DICOPAS)] ✂️ ⬇️
+    AppBar(
       title: Text(
         judulResto, // ← EDIT: Judul Resto
         style: const TextStyle(
@@ -88,7 +103,7 @@ class HeaderBerandaWidget extends StatelessWidget implements PreferredSizeWidget
         ),
       ],
     );
-    // ⬆️ ✂️ [AKHIR POTONGAN KODE] ⬆️
+    // ⬆️ ✂️ [AKHIR COPAS CARA 2 - SAMPAI SINI] ⬆️
   }
 
   @override

@@ -5,16 +5,29 @@ import '../models/food_item.dart'; // ← Import model makanan
 // FILE: lib/independent/list_menu_resto.dart
 // 📌 FUNGSI: List Makanan / Menu Resto yang Bisa Di-scroll Ke Bawah
 //
-// 🎯 LOKASI PASANG DI FILE TUJUAN:
-//    Dipasang di file `halaman_beranda.dart` -> pada properti `body:` di Scaffold.
+// 🎯 LOKASI TEMPEL DI FILE TUJUAN (`halaman_beranda.dart`):
+//    Di file `halaman_beranda.dart` -> Pada properti `body:` di Scaffold.
 //
 // ═════════════════════════════════════════════════════════════════════════════
-// ❓ JAWABAN SINGKAT: APAKAH COPAS SELURUH FILE ATAU KODENYA SAJA?
+// ❓ JAWABAN SINGKAT: APAKAH KATA 'return' DICOPAS?
+// ❌ TIDAK! Kata 'return' TIDAK PERLU DICOPAS!
+//    Cukup copas dari `ListView.builder(` sampai kurung tutup `)` saja.
 //
-// 🔹 CARA 1 (COPAS SELURUH FILE 100% - TANPA ADA YANG DIBUANG):
-//    1. Buat file baru `lib/independent/list_menu_resto.dart` di kuis besok.
+// 📌 CONTOH TEMPEL DI `halaman_beranda.dart`:
+//    Scaffold(
+//      appBar: ...,
+//      body: ListView.builder( ← TEMPEL DI SINI SEBELAH KANAN body:
+//        itemCount: daftarMakanan.length,
+//        itemBuilder: (context, indeks) { ... },
+//      ),
+//    )
+// ═════════════════════════════════════════════════════════════════════════════
+// 📋 2 CARA PAKAI SAAT KUIS:
+//
+// 🔹 CARA 1 (COPAS SELURUH FILE 100% - TANPA MEMUTUS KODE):
+//    1. Buat file baru `lib/independent/list_menu_resto.dart` di project kuis.
 //    2. COPAS SELURUH ISI FILE INI DARI BARIS 1 SAMPAI BARIS TERAKHIR.
-//    3. Di `halaman_beranda.dart`, panggil widget ini pada `Scaffold`:
+//    3. Di `halaman_beranda.dart`, panggil:
 //       body: ListMenuRestoWidget(
 //         daftarMakanan: FoodItem.daftarMakanan,
 //         onKlikItem: (item) {
@@ -22,9 +35,8 @@ import '../models/food_item.dart'; // ← Import model makanan
 //         },
 //       ),
 //
-// 🔹 CARA 2 (JIKA MALAS BUAT FILE BARU - COPAS POTONGAN KODENYA SAJA):
-//    Copy HANYA blok di bawah ini (dari ListView.builder sampai kurung tutup)
-//    dan tempel di sebelah `body:` pada `halaman_beranda.dart`.
+// 🔹 CARA 2 (JIKA TAMPILKAN LANGSUNG DI HALAMAN_BERANDA.DART TANPA BUAT FILE BARU):
+//    Copas HANYA blok di bawah ini (Mulai dari `ListView.builder(` sampai `)`).
 // ═════════════════════════════════════════════════════════════════════════════
 
 class ListMenuRestoWidget extends StatelessWidget {
@@ -39,8 +51,10 @@ class ListMenuRestoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ⬇️ ✂️ [POTONGAN KODE - JIKA CARA 2] ✂️ ⬇️
-    return ListView.builder(
+    return 
+
+    // ⬇️ ✂️ [MULAI COPAS CARA 2 - DARI SINI (KATA 'return' DI ATAS JANGAN DICOPAS)] ✂️ ⬇️
+    ListView.builder(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       itemCount: daftarMakanan.length, // ← Jumlah item makanan
       itemBuilder: (context, indeks) {
@@ -126,6 +140,6 @@ class ListMenuRestoWidget extends StatelessWidget {
         );
       },
     );
-    // ⬆️ ✂️ [AKHIR POTONGAN KODE] ⬆️
+    // ⬆️ ✂️ [AKHIR COPAS CARA 2 - SAMPAI SINI] ⬆️
   }
 }

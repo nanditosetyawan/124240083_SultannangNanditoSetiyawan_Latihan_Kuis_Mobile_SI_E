@@ -4,24 +4,38 @@ import 'package:flutter/material.dart';
 // FILE: lib/independent/tombol_menu_profil.dart
 // 📌 FUNGSI: List Tombol Navigasi Halaman Profil (Menu Resto, Keranjang, dll)
 //
-// 🎯 LOKASI PASANG DI FILE TUJUAN:
-//    Dipasang di file `halaman_profil.dart` -> di bawah Header Profil pada `Column(children: [...])`.
+// 🎯 LOKASI TEMPEL DI FILE TUJUAN (`halaman_profil.dart`):
+//    Di file `halaman_profil.dart` -> Di bawah Header Profil pada `Column(children: [...])`.
 //
 // ═════════════════════════════════════════════════════════════════════════════
-// ❓ JAWABAN SINGKAT: APAKAH COPAS SELURUH FILE ATAU KODENYA SAJA?
+// ❓ JAWABAN SINGKAT: APAKAH KATA 'return' DICOPAS?
+// ❌ TIDAK! Kata 'return' TIDAK PERLU DICOPAS!
+//    Cukup copas dari `Column(` sampai kurung tutup `)` saja.
 //
-// 🔹 CARA 1 (COPAS SELURUH FILE 100% - TANPA ADA YANG DIBUANG):
-//    1. Buat file baru `lib/independent/tombol_menu_profil.dart` di kuis besok.
+// 📌 CONTOH TEMPEL DI `halaman_profil.dart`:
+//    Column(
+//      children: [
+//        HeaderProfilWidget(...),
+//        SizedBox(height: 16),
+//        Column( ← TEMPEL DI SINI DI DALAM CHILDREN COLUMN
+//          children: [ Card(...), Card(...) ],
+//        ),
+//      ],
+//    )
+// ═════════════════════════════════════════════════════════════════════════════
+// 📋 2 CARA PAKAI SAAT KUIS:
+//
+// 🔹 CARA 1 (COPAS SELURUH FILE 100% - TANPA MEMUTUS KODE):
+//    1. Buat file baru `lib/independent/tombol_menu_profil.dart` di project kuis.
 //    2. COPAS SELURUH ISI FILE INI DARI BARIS 1 SAMPAI BARIS TERAKHIR.
-//    3. Di `halaman_profil.dart`, panggil widget ini pada `Column`:
+//    3. Di `halaman_profil.dart`, panggil:
 //       TombolMenuProfilWidget(
 //         onKlikMenuResto: () => Navigator.push(...),
 //         onKlikPemesanan: () => Navigator.push(...),
 //       ),
 //
-// 🔹 CARA 2 (JIKA MALAS BUAT FILE BARU - COPAS POTONGAN KODENYA SAJA):
-//    Copy HANYA blok di bawah ini (dari Column sampai kurung tutup)
-//    dan tempel di dalam `children: [...]` pada `Column` di `halaman_profil.dart`.
+// 🔹 CARA 2 (JIKA TAMPILKAN LANGSUNG DI HALAMAN_PROFIL.DART TANPA BUAT FILE BARU):
+//    Copas HANYA blok di bawah ini (Mulai dari `Column(` sampai `)`).
 // ═════════════════════════════════════════════════════════════════════════════
 
 class TombolMenuProfilWidget extends StatelessWidget {
@@ -38,8 +52,10 @@ class TombolMenuProfilWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ⬇️ ✂️ [POTONGAN KODE - JIKA CARA 2] ✂️ ⬇️
-    return Column(
+    return 
+
+    // ⬇️ ✂️ [MULAI COPAS CARA 2 - DARI SINI (KATA 'return' DI ATAS JANGAN DICOPAS)] ✂️ ⬇️
+    Column(
       children: [
         // ── 1. TOMBOL MENU RESTO ──
         Card(
@@ -117,6 +133,6 @@ class TombolMenuProfilWidget extends StatelessWidget {
         // ),
       ],
     );
-    // ⬆️ ✂️ [AKHIR POTONGAN KODE] ⬆️
+    // ⬆️ ✂️ [AKHIR COPAS CARA 2 - SAMPAI SINI] ⬆️
   }
 }

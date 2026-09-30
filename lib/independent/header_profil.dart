@@ -4,24 +4,38 @@ import 'package:flutter/material.dart';
 // FILE: lib/independent/header_profil.dart
 // 📌 FUNGSI: Header Profil User (Foto Bulat Kosong + Nama + Email/NIM)
 //
-// 🎯 LOKASI PASANG DI FILE TUJUAN:
-//    Dipasang di file `halaman_profil.dart` -> di dalam `Column(children: [...])` bagian atas.
+// 🎯 LOKASI TEMPEL DI FILE TUJUAN (`halaman_profil.dart`):
+//    Di file `halaman_profil.dart` -> Di dalam `Column(children: [...])` bagian atas.
 //
 // ═════════════════════════════════════════════════════════════════════════════
-// ❓ JAWABAN SINGKAT: APAKAH COPAS SELURUH FILE ATAU KODENYA SAJA?
+// ❓ JAWABAN SINGKAT: APAKAH KATA 'return' DICOPAS?
+// ❌ TIDAK! Kata 'return' TIDAK PERLU DICOPAS!
+//    Cukup copas dari `Container(` sampai kurung tutup `)` saja.
 //
-// 🔹 CARA 1 (COPAS SELURUH FILE 100% - TANPA ADA YANG DIBUANG):
-//    1. Buat file baru `lib/independent/header_profil.dart` di kuis besok.
+// 📌 CONTOH TEMPEL DI `halaman_profil.dart`:
+//    Column(
+//      children: [
+//        Container( ← TEMPEL DI SINI DI DALAM CHILDREN COLUMN
+//          width: double.infinity,
+//          child: Column( ... ),
+//        ),
+//        SizedBox(height: 16),
+//      ],
+//    )
+// ═════════════════════════════════════════════════════════════════════════════
+// 📋 2 CARA PAKAI SAAT KUIS:
+//
+// 🔹 CARA 1 (COPAS SELURUH FILE 100% - TANPA MEMUTUS KODE):
+//    1. Buat file baru `lib/independent/header_profil.dart` di project kuis.
 //    2. COPAS SELURUH ISI FILE INI DARI BARIS 1 SAMPAI BARIS TERAKHIR.
-//    3. Di `halaman_profil.dart`, panggil widget ini pada `Column`:
+//    3. Di `halaman_profil.dart`, panggil:
 //       HeaderProfilWidget(
 //         namaUser: "Nandito Setyawan",
 //         emailUser: "nandito@gmail.com",
 //       ),
 //
-// 🔹 CARA 2 (JIKA MALAS BUAT FILE BARU - COPAS POTONGAN KODENYA SAJA):
-//    Copy HANYA blok di bawah ini (dari Container sampai kurung tutup)
-//    dan tempel di dalam `children: [...]` pada `Column` di `halaman_profil.dart`.
+// 🔹 CARA 2 (JIKA TAMPILKAN LANGSUNG DI HALAMAN_PROFIL.DART TANPA BUAT FILE BARU):
+//    Copas HANYA blok di bawah ini (Mulai dari `Container(` sampai `)`).
 // ═════════════════════════════════════════════════════════════════════════════
 
 class HeaderProfilWidget extends StatelessWidget {
@@ -38,8 +52,10 @@ class HeaderProfilWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ⬇️ ✂️ [POTONGAN KODE - JIKA CARA 2] ✂️ ⬇️
-    return Container(
+    return 
+
+    // ⬇️ ✂️ [MULAI COPAS CARA 2 - DARI SINI (KATA 'return' DI ATAS JANGAN DICOPAS)] ✂️ ⬇️
+    Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
       decoration: BoxDecoration(
@@ -89,6 +105,6 @@ class HeaderProfilWidget extends StatelessWidget {
         ],
       ),
     );
-    // ⬆️ ✂️ [AKHIR POTONGAN KODE] ⬆️
+    // ⬆️ ✂️ [AKHIR COPAS CARA 2 - SAMPAI SINI] ⬆️
   }
 }

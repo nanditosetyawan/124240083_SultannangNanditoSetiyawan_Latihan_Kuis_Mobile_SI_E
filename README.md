@@ -1,5 +1,18 @@
 # PETA NAVIGASI KODE - CTRL+F CHEATSHEET
 
+## 🗺️ RINGKASAN KE-6 FILE INDEPENDENT (SIAP KUIS):
+
+| File di `lib/independent/` | Tujuan Visual & Fungsi | Tempat Memasang Kode |
+|---|---|---|
+| 📄 [`bottom_navigation.dart`](file:///d:/DITO/kuliah/Semester%205/prak%20mobile/lat_responsi/latres/lib/independent/bottom_navigation.dart) | Memasang Bottom Bar (Resto & Profil) | `root.dart` pada `bottomNavigationBar:` |
+| 📄 [`header_beranda.dart`](file:///d:/DITO/kuliah/Semester%205/prak%20mobile/lat_responsi/latres/lib/independent/header_beranda.dart) | Memasang Header Resto (AppBar "NourishBowl") | `halaman_beranda.dart` pada `appBar:` |
+| 📄 [`list_menu_resto.dart`](file:///d:/DITO/kuliah/Semester%205/prak%20mobile/lat_responsi/latres/lib/independent/list_menu_resto.dart) | Memasang Daftar Makanan ListView (Bisa di-scroll) | `halaman_beranda.dart` pada `body:` |
+| 📄 [`header_profil.dart`](file:///d:/DITO/kuliah/Semester%205/prak%20mobile/lat_responsi/latres/lib/independent/header_profil.dart) | Memasang Header Profil (Foto Bulat + Nama + Email/NIM) | `halaman_profil.dart` pada `Column(children: [...])` bagian atas |
+| 📄 [`tombol_menu_profil.dart`](file:///d:/DITO/kuliah/Semester%205/prak%20mobile/lat_responsi/latres/lib/independent/tombol_menu_profil.dart) | Memasang List Tombol Navigasi Profil (Resto, Keranjang, Logout) | `halaman_profil.dart` pada `Column(children: [...])` bagian bawah |
+| 📄 [`detail_menu_hitung.dart`](file:///d:/DITO/kuliah/Semester%205/prak%20mobile/lat_responsi/latres/lib/independent/detail_menu_hitung.dart) | Memasang Halaman Detail Makanan + Form Input Porsi + Hitung Total Harga Realtime | Full 1 file `halaman_detail.dart` |
+
+---
+
 ## Cara Pakai Saat Kuis:
 1. Buka file yang dibutuhkan
 2. Tekan `Ctrl + F`
@@ -18,6 +31,13 @@ lib/
 ├── halaman_detail.dart       ← [GAMBAR-BESAR] [INPUT-PORSI] [HITUNG-TOTAL] detail item
 ├── halaman_profil.dart       ← [FOTO-PROFIL-BULAT] [NAMA-PROFIL] [KARTU-TOMBOL] profil
 ├── halaman_keranjang.dart    ← [LIST-PESANAN] [BOX-TOTAL] keranjang
+├── independent/              ← FOLDER COMPONENT INDEPENDENT SIAP COPAS
+│   ├── bottom_navigation.dart
+│   ├── header_beranda.dart
+│   ├── list_menu_resto.dart
+│   ├── header_profil.dart
+│   ├── tombol_menu_profil.dart
+│   └── detail_menu_hitung.dart
 └── models/
     └── food_item.dart        ← DATA ITEM (dari sekolah, jangan diubah strukturnya)
 ```

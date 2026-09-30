@@ -5,19 +5,26 @@ import '../models/food_item.dart'; // ← Import model makanan
 // FILE: lib/independent/detail_menu_hitung.dart
 // 📌 FUNGSI: Detail Makanan + Input Porsi + PROSES HITUNG TOTAL HARGA REALTIME
 //
-// 🎯 LOKASI PASANG DI FILE TUJUAN:
+// 🎯 LOKASI TEMPEL DI FILE TUJUAN (`halaman_detail.dart`):
 //    Dipanggil oleh `list_menu_resto.dart` saat 1 item makanan diklik (`Navigator.push`).
 //
 // ═════════════════════════════════════════════════════════════════════════════
-// ❓ JAWABAN SINGKAT: APAKAH COPAS SELURUH FILE ATAU KODENYA SAJA?
+// ❓ JAWABAN SINGKAT: APAKAH KATA 'return' DICOPAS?
+//    Untuk file detail ini, REKOMENDASI UTAMA adalah COPAS SELURUH FILE 100% (CARA 1).
 //
-// 🔹 COPAS SELURUH FILE 100% (DARI BARIS 1 SAMPAI BARIS TERAKHIR):
-//    1. Buat file baru `lib/independent/detail_menu_hitung.dart` di kuis besok.
+// 📌 CARA PANGGUL / BUKA HALAMAN DETAIL:
+//    Navigator.push(context, MaterialPageRoute(
+//      builder: (_) => DetailMenuHitungWidget(item: item),
+//    ));
+// ═════════════════════════════════════════════════════════════════════════════
+// 📋 2 CARA PAKAI SAAT KUIS:
+//
+// 🔹 CARA 1 (COPAS SELURUH FILE 100% - REKOMENDASI UTAMA):
+//    1. Buat file baru `lib/independent/detail_menu_hitung.dart` di project kuis.
 //    2. COPAS SELURUH ISI FILE INI DARI BARIS 1 SAMPAI BARIS TERAKHIR.
-//    3. Buka halaman detail ini saat item makanan diklik:
-//       Navigator.push(context, MaterialPageRoute(
-//         builder: (_) => DetailMenuHitungWidget(item: item),
-//       ));
+//
+// 🔹 CARA 2 (JIKA MALAS BUAT FILE BARU):
+//    Copas bagian `SingleChildScrollView(...)` di bawah ke `body:` `halaman_detail.dart`.
 // ═════════════════════════════════════════════════════════════════════════════
 
 class DetailMenuHitungWidget extends StatefulWidget {
@@ -55,7 +62,10 @@ class _DetailMenuHitungWidgetState extends State<DetailMenuHitungWidget> {
         title: Text(widget.item.name),
         backgroundColor: Colors.green,
       ),
-      body: SingleChildScrollView(
+      body: 
+
+      // ⬇️ ✂️ [MULAI COPAS CARA 2 - DARI SINI (KATA 'body:' DI ATAS JANGAN DICOPAS)] ✂️ ⬇️
+      SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -217,6 +227,7 @@ class _DetailMenuHitungWidgetState extends State<DetailMenuHitungWidget> {
           ],
         ),
       ),
+      // ⬆️ ✂️ [AKHIR COPAS CARA 2 - SAMPAI SINI] ⬆️
     );
   }
 }

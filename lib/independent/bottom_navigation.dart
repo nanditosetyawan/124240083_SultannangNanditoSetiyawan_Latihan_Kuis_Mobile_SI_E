@@ -4,24 +4,37 @@ import 'package:flutter/material.dart';
 // FILE: lib/independent/bottom_navigation.dart
 // 📌 FUNGSI: Bottom Navigation Bar (Tab Menu Resto & Tab Profil)
 //
-// 🎯 LOKASI PASANG DI FILE TUJUAN:
-//    Dipasang di file `root.dart` -> pada properti `bottomNavigationBar:` di Scaffold.
+// 🎯 LOKASI TEMPEL DI FILE TUJUAN (`root.dart`):
+//    Di file `root.dart` -> Pada properti `bottomNavigationBar:` di Scaffold.
 //
 // ═════════════════════════════════════════════════════════════════════════════
-// ❓ JAWABAN SINGKAT: APAKAH COPAS SELURUH FILE ATAU KODENYA SAJA?
+// ❓ JAWABAN SINGKAT: APAKAH KATA 'return' DICOPAS?
+// ❌ TIDAK! Kata 'return' TIDAK PERLU DICOPAS!
+//    Cukup copas dari `BottomNavigationBar(` sampai kurung tutup `)` saja.
 //
-// 🔹 CARA 1 (COPAS SELURUH FILE 100% - TANPA ADA YANG DIBUANG):
-//    1. Buat file baru `lib/independent/bottom_navigation.dart` di kuis besok.
+// 📌 CONTOH TEMPEL DI `root.dart`:
+//    Scaffold(
+//      body: ...,
+//      bottomNavigationBar: BottomNavigationBar( ← TEMPEL DI SINI
+//        currentIndex: _indeksBottomNav,
+//        onTap: (indeks) => setState(() => _indeksBottomNav = indeks),
+//        items: const [ ... ],
+//      ),
+//    )
+// ═════════════════════════════════════════════════════════════════════════════
+// 📋 2 CARA PAKAI SAAT KUIS:
+//
+// 🔹 CARA 1 (COPAS SELURUH FILE 100% - TANPA MEMUTUS KODE):
+//    1. Buat file baru `lib/independent/bottom_navigation.dart` di project kuis.
 //    2. COPAS SELURUH ISI FILE INI DARI BARIS 1 SAMPAI BARIS TERAKHIR.
-//    3. Di `root.dart`, panggil widget ini pada `Scaffold`:
+//    3. Di `root.dart`, panggil:
 //       bottomNavigationBar: BottomNavWidget(
 //         indeksAktif: _indeksBottomNav,
 //         onPindahTab: (indeks) => setState(() => _indeksBottomNav = indeks),
 //       ),
 //
-// 🔹 CARA 2 (JIKA MALAS BUAT FILE BARU - COPAS POTONGAN KODENYA SAJA):
-//    Copy HANYA blok di bawah ini (dari BottomNavigationBar sampai kurung tutup)
-//    dan tempel di sebelah `bottomNavigationBar:` pada `root.dart`.
+// 🔹 CARA 2 (JIKA TAMPILKAN LANGSUNG DI ROOT.DART TANPA BUAT FILE BARU):
+//    Copas HANYA blok di bawah ini (Mulai dari `BottomNavigationBar(` sampai `)`).
 // ═════════════════════════════════════════════════════════════════════════════
 
 class BottomNavWidget extends StatelessWidget {
@@ -36,8 +49,10 @@ class BottomNavWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ⬇️ ✂️ [POTONGAN KODE - JIKA CARA 2] ✂️ ⬇️
-    return BottomNavigationBar(
+    return 
+    
+    // ⬇️ ✂️ [MULAI COPAS CARA 2 - DARI SINI (KATA 'return' DI ATAS JANGAN DICOPAS)] ✂️ ⬇️
+    BottomNavigationBar(
       currentIndex: indeksAktif, // ← Indeks tab aktif (0 = Menu, 1 = Profil)
       onTap: onPindahTab,         // ← Callback saat tab diklik untuk pindah layar
       selectedItemColor: Colors.green, // ← EDIT: Warna tab saat aktif
@@ -64,6 +79,6 @@ class BottomNavWidget extends StatelessWidget {
         // ),
       ],
     );
-    // ⬆️ ✂️ [AKHIR POTONGAN KODE] ⬆️
+    // ⬆️ ✂️ [AKHIR COPAS CARA 2 - SAMPAI SINI] ⬆️
   }
 }
