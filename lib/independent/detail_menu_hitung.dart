@@ -3,18 +3,25 @@ import '../models/food_item.dart'; // ← Import model makanan
 
 // ═════════════════════════════════════════════════════════════════════════════
 // FILE: lib/independent/detail_menu_hitung.dart
-// TAMPILAN: Detail Makanan + Form Input Angka Porsi + HITUNG TOTAL HARGA
-// KETERKAITAN: DIPANGGUL OLEH `list_menu_resto.dart` ATAU `halaman_beranda.dart`
-//              saat 1 menu makanan dipencet (Navigator.push).
-// METODE COPAS: Copas class `DetailMenuHitungWidget` ini ke halaman detail.
-// ═════════════════════════════════════════════════════════════════════════════
+// 📌 FUNGSI: Detail Makanan + Input Porsi + PROSES HITUNG TOTAL HARGA REALTIME
 //
-// ✏️ PETUNJUK RUMUS HITUNG & EDIT BESOK SAAT KUIS:
-// 1. Rumus Hitung Total -> `int total = _porsi * widget.item.price;`
-//    - Jika ada Diskon 10%: `int total = (_porsi * widget.item.price * 0.9).toInt();`
-//    - Jika ada Pajak 11% : `int total = (_porsi * widget.item.price * 1.11).toInt();`
-// 2. Input Angka Porsi -> Menggunakan `TextField` dengan `keyboardType: TextInputType.number`
-//    atau Tombol Plus Minus (+ / -).
+// 🎯 LOKASI PASANG DI FILE TUJUAN:
+//    Di file `halaman_detail.dart` -> Dipanggil oleh `list_menu_resto.dart`
+//    saat 1 item makanan diklik (`Navigator.push`).
+//
+// ═════════════════════════════════════════════════════════════════════════════
+// 📋 DUA CARA PAKAI / COPAS BESOK SAAT KUIS:
+//
+// ── CARA A (PALING MUDAH - IMPORT CLASS):
+//    1. Di atas file `halaman_detail.dart`, tambahkan:
+//       import 'independent/detail_menu_hitung.dart';
+//    2. Buka halaman detail dengan passing data item:
+//       Navigator.push(context, MaterialPageRoute(
+//         builder: (_) => DetailMenuHitungWidget(item: item),
+//       ));
+//
+// ── CARA B (COPAS KODE LANGSUNG TANPA IMPORT CLASS):
+//    Copas seluruh class Stateful ini atau bagian `SingleChildScrollView(...)` di bawah.
 // ═════════════════════════════════════════════════════════════════════════════
 
 class DetailMenuHitungWidget extends StatefulWidget {
@@ -37,7 +44,6 @@ class _DetailMenuHitungWidgetState extends State<DetailMenuHitungWidget> {
   @override
   void initState() {
     super.initState();
-    // Default jumlah porsi awal = 1 (atau sesuai item.quantity)
     _jumlahPorsi = widget.item.quantity > 0 ? widget.item.quantity : 1;
   }
 
@@ -57,7 +63,7 @@ class _DetailMenuHitungWidgetState extends State<DetailMenuHitungWidget> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // ── 1. GAMBAR BESAR MAKANAN ──
+            // 1. Gambar Besark Makanan
             Image.network(
               widget.item.imageUrl, // ← EDIT: Field foto model
               width: double.infinity,
@@ -75,7 +81,7 @@ class _DetailMenuHitungWidgetState extends State<DetailMenuHitungWidget> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // ── 2. NAMA & HARGA SATUAN ──
+                  // 2. Nama & Harga Satuan
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -101,7 +107,7 @@ class _DetailMenuHitungWidgetState extends State<DetailMenuHitungWidget> {
 
                   const SizedBox(height: 8),
 
-                  // ── 3. DESKRIPSI MAKANAN ──
+                  // 3. Deskripsi Makanan
                   Text(
                     widget.item.description,
                     style: TextStyle(fontSize: 14, color: Colors.grey[700]),
@@ -109,7 +115,7 @@ class _DetailMenuHitungWidgetState extends State<DetailMenuHitungWidget> {
 
                   const Divider(height: 32),
 
-                  // ── 4. FIELD FORM / INPUT ANGKA JUMLAH PORSI ──
+                  // 4. Input Angka Jumlah Porsi (+ / -)
                   const Text(
                     'Jumlah Porsi:',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -118,19 +124,12 @@ class _DetailMenuHitungWidgetState extends State<DetailMenuHitungWidget> {
 
                   Row(
                     children: [
-                      // Tombol Kurang (-)
                       IconButton.outlined(
                         icon: const Icon(Icons.remove),
                         onPressed: _jumlahPorsi > 1
-                            ? () {
-                                setState(() {
-                                  _jumlahPorsi--;
-                                });
-                              }
+                            ? () => setState(() => _jumlahPorsi--)
                             : null,
                       ),
-
-                      // Teks/Form Angka Jumlah Porsi
                       Container(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 8),
@@ -147,22 +146,16 @@ class _DetailMenuHitungWidgetState extends State<DetailMenuHitungWidget> {
                           ),
                         ),
                       ),
-
-                      // Tombol Tambah (+)
                       IconButton.outlined(
                         icon: const Icon(Icons.add),
-                        onPressed: () {
-                          setState(() {
-                            _jumlahPorsi++;
-                          });
-                        },
+                        onPressed: () => setState(() => _jumlahPorsi++),
                       ),
                     ],
                   ),
 
                   const Divider(height: 32),
 
-                  // ── 5. HASIL HITUNG TOTAL HARGA REALTIME ──
+                  // 5. Hasil Hitung Total Harga Realtime
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
@@ -194,7 +187,7 @@ class _DetailMenuHitungWidgetState extends State<DetailMenuHitungWidget> {
 
                   const SizedBox(height: 24),
 
-                  // ── 6. TOMBOL SIMPAN / MESAN ──
+                  // 6. Tombol Simpan / Pesan
                   SizedBox(
                     width: double.infinity,
                     height: 50,
