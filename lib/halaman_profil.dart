@@ -2,15 +2,13 @@
 // FILE: halaman_profil.dart
 // Fungsi: Halaman profil user (avatar, nama, tombol menu & pemesanan)
 // Import di: root.dart → daftarHalaman[1]
-// Parameter: onPindahKeMenu (fungsi dari root.dart untuk pindah tab)
 // ═══════════════════════════════════════════════════════════
 import 'package:flutter/material.dart';
 import 'halaman_keranjang.dart';
+import 'root.dart'; // ← Ditambahkan agar tombol Menu Resto bisa buka RootHalaman()
 
 class HalamanProfil extends StatelessWidget {
-  final VoidCallback? onPindahKeMenu; // ← VARIABEL: fungsi pindah tab, dikirim dari root.dart
-
-  const HalamanProfil({super.key, this.onPindahKeMenu});
+  const HalamanProfil({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -135,12 +133,15 @@ class HalamanProfil extends StatelessWidget {
 
             // ═══ [TOMBOL-MENU-RESTO] ═══════════════════════
             // Tampilan: Kartu putih ikon garpu + "Menu Resto"
-            // Aksi saat diklik: Pindah ke tab Menu (index 0)
-            // Syarat: Butuh parameter onPindahKeMenu dari root.dart
+            // Aksi saat diklik: Membuka ulang halaman utama (kembali ke beranda)
+            // Syarat: Butuh import 'root.dart' di paling atas agar bisa buka RootHalaman()
             // ════════════════════════════════════════════════
             // ✂️ MULAI COPAS TOMBOL MENU RESTO DARI SINI
             GestureDetector(
-              onTap: () { if (onPindahKeMenu != null) onPindahKeMenu!(); },
+              onTap: () { 
+                // Langsung buka root (otomatis menampilkan tab menu resto)
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const RootHalaman()));
+              },
               child: _KartuTombol(
                 ikon: Icons.restaurant,                // ← VARIABEL: ikon
                 judul: 'Menu Resto',                   // ← VARIABEL: judul kartu

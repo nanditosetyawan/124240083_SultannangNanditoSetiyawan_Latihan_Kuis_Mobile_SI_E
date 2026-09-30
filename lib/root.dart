@@ -50,22 +50,21 @@ class _RootHalamanState extends State<RootHalaman> {
   // Jika nilainya 1 -> Buka index 1 di daftarHalaman
   int _indeksHalaman = 0; 
 
-  // ── FUNGSI: Dipanggil dari HalamanProfil saat klik tombol "Menu Resto" ────
-  void _pindahKeMenu() {
-    setState(() { _indeksHalaman = 0; });
-  }
+  // (Dihapus: Fungsi pindah tab manual karena sekarang pakai Navigator langsung di halaman_profil)
 
   @override
   Widget build(BuildContext context) {
 
     // ── DAFTAR HALAMAN (HUBUNGAN TAB DENGAN FILE HALAMAN) ─────────────────────
-    // ❓ TANYA: "Bagaimana tahu profil mengarah ke halaman_profil.dart?"
-    // 💡 JAWAB: Di sinilah setting-nya! 
-    // Kita mendaftarkan file yang sudah di-import di atas ke dalam sebuah List.
-    // Urutannya (index) harus sama dengan urutan di BottomNavigationBarItem.
+    // ❓ TANYA: "Nama filenya halaman_beranda.dart, kok di sini jadi HalamanBeranda()?"
+    // 💡 JAWAB: 
+    //    1. 'halaman_beranda.dart' adalah NAMA FILE (di-import di baris paling atas).
+    //    2. 'HalamanBeranda()' adalah NAMA CLASS yang ada DI DALAM file tersebut.
+    //    Coba buka file halaman_beranda.dart, kamu pasti lihat tulisan: "class HalamanBeranda..."
+    //    Jadi kita memanggil nama class-nya, bukan nama filenya!
     final daftarHalaman = <Widget>[
-      HalamanBeranda(),                             // Index 0: Akan tampil jika tab pertama diklik
-      HalamanProfil(onPindahKeMenu: _pindahKeMenu), // Index 1: Akan tampil jika tab kedua diklik
+      HalamanBeranda(), // Index 0: Memanggil CLASS HalamanBeranda dari file halaman_beranda.dart
+      HalamanProfil(),  // Index 1: Memanggil CLASS HalamanProfil dari file halaman_profil.dart
     ];
 
     // ════════════════════════════════════════════════════════════════════════
