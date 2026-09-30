@@ -45,7 +45,10 @@ class RootHalaman extends StatefulWidget {
 class _RootHalamanState extends State<RootHalaman> {
 
   // ── VARIABEL: Tab mana yang aktif sekarang ────────────────────────────────
-  int _indeksHalaman = 0; // 0 = Menu Resto, 1 = Profil
+  // Ini adalah SETTING PENENTU halaman apa yang sedang dibuka.
+  // Jika nilainya 0 -> Buka index 0 di daftarHalaman
+  // Jika nilainya 1 -> Buka index 1 di daftarHalaman
+  int _indeksHalaman = 0; 
 
   // ── FUNGSI: Dipanggil dari HalamanProfil saat klik tombol "Menu Resto" ────
   void _pindahKeMenu() {
@@ -55,10 +58,14 @@ class _RootHalamanState extends State<RootHalaman> {
   @override
   Widget build(BuildContext context) {
 
-    // ── DAFTAR HALAMAN per Tab ────────────────────────────────────────────────
+    // ── DAFTAR HALAMAN (HUBUNGAN TAB DENGAN FILE HALAMAN) ─────────────────────
+    // ❓ TANYA: "Bagaimana tahu profil mengarah ke halaman_profil.dart?"
+    // 💡 JAWAB: Di sinilah setting-nya! 
+    // Kita mendaftarkan file yang sudah di-import di atas ke dalam sebuah List.
+    // Urutannya (index) harus sama dengan urutan di BottomNavigationBarItem.
     final daftarHalaman = <Widget>[
-      HalamanBeranda(),                             // index 0 = Tab Menu
-      HalamanProfil(onPindahKeMenu: _pindahKeMenu), // index 1 = Tab Profil
+      HalamanBeranda(),                             // Index 0: Akan tampil jika tab pertama diklik
+      HalamanProfil(onPindahKeMenu: _pindahKeMenu), // Index 1: Akan tampil jika tab kedua diklik
     ];
 
     // ════════════════════════════════════════════════════════════════════════
@@ -89,10 +96,16 @@ class _RootHalamanState extends State<RootHalaman> {
       //
       // ══════════════════════════════════════════════════════════════════════
       bottomNavigationBar: BottomNavigationBar(
+        // 1. currentIndex membaca _indeksHalaman (0 atau 1)
         currentIndex: _indeksHalaman,              // ← angka tab yg aktif
         selectedItemColor: Color(0xFFE07B39),      // ← EDIT: warna tab aktif
         unselectedItemColor: Colors.grey,          // ← EDIT: warna tab nonaktif
         backgroundColor: Colors.white,
+
+        // 2. onTap mengubah _indeksHalaman sesuai tombol yang diklik
+        // Jika klik "Profil" (tombol ke-2), maka `indeks` bernilai 1.
+        // setState mengubah _indeksHalaman jadi 1, layar di-refresh.
+        // Scaffold body akan memanggil daftarHalaman[1] (HalamanProfil).
         onTap: (indeks) {
           setState(() { _indeksHalaman = indeks; }); // ← pindah tab
         },

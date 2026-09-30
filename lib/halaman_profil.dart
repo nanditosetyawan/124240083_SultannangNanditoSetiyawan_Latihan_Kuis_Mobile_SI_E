@@ -65,15 +65,16 @@ class HalamanProfil extends StatelessWidget {
 
             // ═══ [FOTO-PROFIL-BULAT] ═══════════════════════
             // Tampilan: Lingkaran oranye muda dengan ikon orang di tengah
-            // Copas: Ambil dari CircleAvatar sampai AKHIR FOTO-PROFIL-BULAT
             // ════════════════════════════════════════════════
+            // ✂️ MULAI COPAS FOTO PROFIL DARI SINI
             CircleAvatar(
               radius: 60,                              // ← VARIABEL: ukuran lingkaran
               backgroundColor: Color(0xFFF5CBA7),      // ← VARIABEL: warna background lingkaran
               child: Icon(Icons.person, size: 70,       // ← VARIABEL: ikon profil
                 color: Color(0xFFE07B39)),              // ← VARIABEL: warna ikon
             ),
-            // ═══ AKHIR [FOTO-PROFIL-BULAT] ═════════════════
+            // ✂️ AKHIR COPAS FOTO PROFIL SAMPAI SINI
+            // ════════════════════════════════════════════════
 
 
 
@@ -95,16 +96,22 @@ class HalamanProfil extends StatelessWidget {
 
 
 
-            // ═══ [NAMA-PROFIL] ═════════════════════════════
+            // ═══ [NAMA-DAN-JABATAN] ═════════════════════════════
             // Tampilan: Nama besar + jabatan kecil abu di bawahnya
-            // Copas: Ambil dari Text nama sampai AKHIR NAMA-PROFIL
-            // ════════════════════════════════════════════════
-            Text('Dito',                               // ← VARIABEL: nama user
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black87, letterSpacing: 1.2)),
-            SizedBox(height: 6),
-            Text('BOS Hotel',                          // ← VARIABEL: jabatan/peran
-              style: TextStyle(fontSize: 14, color: Colors.grey)),
-            // ═══ AKHIR [NAMA-PROFIL] ═══════════════════════
+            // (Dibungkus dalam Column agar menjadi SATU KESATUAN saat dicopas)
+            // ════════════════════════════════════════════════════
+            // ✂️ MULAI COPAS NAMA & JABATAN DARI SINI
+            Column(
+              children: [
+                Text('Dito',                               // ← VARIABEL: nama user
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black87, letterSpacing: 1.2)),
+                SizedBox(height: 6),
+                Text('BOS Hotel',                          // ← VARIABEL: jabatan/peran
+                  style: TextStyle(fontSize: 14, color: Colors.grey)),
+              ],
+            ),
+            // ✂️ AKHIR COPAS NAMA & JABATAN SAMPAI SINI
+            // ════════════════════════════════════════════════════
 
 
 
@@ -129,9 +136,9 @@ class HalamanProfil extends StatelessWidget {
             // ═══ [TOMBOL-MENU-RESTO] ═══════════════════════
             // Tampilan: Kartu putih ikon garpu + "Menu Resto"
             // Aksi saat diklik: Pindah ke tab Menu (index 0)
-            // Copas: Ambil dari GestureDetector sampai AKHIR TOMBOL-MENU-RESTO
             // Syarat: Butuh parameter onPindahKeMenu dari root.dart
             // ════════════════════════════════════════════════
+            // ✂️ MULAI COPAS TOMBOL MENU RESTO DARI SINI
             GestureDetector(
               onTap: () { if (onPindahKeMenu != null) onPindahKeMenu!(); },
               child: _KartuTombol(
@@ -140,7 +147,8 @@ class HalamanProfil extends StatelessWidget {
                 deskripsi: 'Pesan makanan favorit Anda dengan mudah.', // ← VARIABEL: deskripsi
               ),
             ),
-            // ═══ AKHIR [TOMBOL-MENU-RESTO] ═════════════════
+            // ✂️ AKHIR COPAS TOMBOL MENU RESTO SAMPAI SINI
+            // ════════════════════════════════════════════════
 
 
 
@@ -165,9 +173,9 @@ class HalamanProfil extends StatelessWidget {
             // ═══ [TOMBOL-PEMESANAN] ════════════════════════
             // Tampilan: Kartu putih ikon nota + "Pemesanan"
             // Aksi saat diklik: Buka halaman keranjang (Navigator.push)
-            // Copas: Ambil dari GestureDetector sampai AKHIR TOMBOL-PEMESANAN
             // Syarat: Butuh import halaman_keranjang.dart di atas file
             // ════════════════════════════════════════════════
+            // ✂️ MULAI COPAS TOMBOL PEMESANAN DARI SINI
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
@@ -179,7 +187,8 @@ class HalamanProfil extends StatelessWidget {
                 deskripsi: 'Jumlah dan harga dihitung otomatis.', // ← VARIABEL: deskripsi
               ),
             ),
-            // ═══ AKHIR [TOMBOL-PEMESANAN] ══════════════════
+            // ✂️ AKHIR COPAS TOMBOL PEMESANAN SAMPAI SINI
+            // ════════════════════════════════════════════════
 
 
 

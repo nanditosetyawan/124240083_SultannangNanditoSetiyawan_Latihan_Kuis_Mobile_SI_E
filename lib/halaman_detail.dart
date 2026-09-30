@@ -70,8 +70,8 @@ class _HalamanDetailState extends State<HalamanDetail> {
 
       // ═══ [APPBAR-DETAIL] ═════════════════════════════════
       // Tampilan: Bar oranye atas dengan nama item + tombol back
-      // Copas: Ambil dari appBar sampai AKHIR APPBAR-DETAIL
       // ═════════════════════════════════════════════════════
+      // ✂️ MULAI COPAS APPBAR DETAIL DARI SINI
       appBar: AppBar(
         title: Text(widget.makanan.name,       // ← VARIABEL: judul = nama item
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
@@ -79,7 +79,8 @@ class _HalamanDetailState extends State<HalamanDetail> {
         iconTheme: IconThemeData(color: Colors.white),
         centerTitle: true,
       ),
-      // ═══ AKHIR [APPBAR-DETAIL] ═══════════════════════════
+      // ✂️ AKHIR COPAS APPBAR DETAIL SAMPAI SINI
+      // ═════════════════════════════════════════════════════
 
 
 
@@ -107,9 +108,9 @@ class _HalamanDetailState extends State<HalamanDetail> {
 
             // ═══ [GAMBAR-BESAR] ════════════════════════════
             // Tampilan: Foto item besar lebar penuh di atas halaman detail
-            // Copas: Ambil dari ClipRRect sampai AKHIR GAMBAR-BESAR
             // VARIABEL: widget.makanan.imageUrl → URL gambar
             // ════════════════════════════════════════════════
+            // ✂️ MULAI COPAS GAMBAR BESAR DARI SINI
             ClipRRect(
               borderRadius: BorderRadius.circular(16), // ← VARIABEL: sudut gambar
               child: Image.network(
@@ -124,7 +125,8 @@ class _HalamanDetailState extends State<HalamanDetail> {
                 ),
               ),
             ),
-            // ═══ AKHIR [GAMBAR-BESAR] ══════════════════════
+            // ✂️ AKHIR COPAS GAMBAR BESAR SAMPAI SINI
+            // ════════════════════════════════════════════════
 
 
 
@@ -147,18 +149,25 @@ class _HalamanDetailState extends State<HalamanDetail> {
 
 
             // ═══ [JUDUL-HARGA] ═════════════════════════════
-            // Tampilan: Nama item besar + harga satuan oranye
-            // Copas: Ambil dari Text nama sampai AKHIR JUDUL-HARGA
+            // Tampilan: Nama item besar + harga satuan oranye + deskripsi
+            // (Dibungkus dalam Column agar menjadi SATU KESATUAN saat dicopas)
             // ════════════════════════════════════════════════
-            Text(widget.makanan.name,          // ← VARIABEL: nama item
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black87)),
-            SizedBox(height: 4),
-            Text(widget.makanan.hargaFormatted, // ← VARIABEL: harga satuan formatted
-              style: TextStyle(fontSize: 16, color: Color(0xFFE07B39), fontWeight: FontWeight.w600)),
-            SizedBox(height: 12),
-            Text(widget.makanan.description,   // ← VARIABEL: deskripsi item
-              style: TextStyle(fontSize: 14, color: Colors.grey[700], height: 1.5)),
-            // ═══ AKHIR [JUDUL-HARGA] ═══════════════════════
+            // ✂️ MULAI COPAS JUDUL, HARGA, & DESKRIPSI DARI SINI
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(widget.makanan.name,          // ← VARIABEL: nama item
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black87)),
+                SizedBox(height: 4),
+                Text(widget.makanan.hargaFormatted, // ← VARIABEL: harga satuan formatted
+                  style: TextStyle(fontSize: 16, color: Color(0xFFE07B39), fontWeight: FontWeight.w600)),
+                SizedBox(height: 12),
+                Text(widget.makanan.description,   // ← VARIABEL: deskripsi item
+                  style: TextStyle(fontSize: 14, color: Colors.grey[700], height: 1.5)),
+              ],
+            ),
+            // ✂️ AKHIR COPAS JUDUL, HARGA, & DESKRIPSI SAMPAI SINI
+            // ════════════════════════════════════════════════
 
 
 
@@ -182,10 +191,10 @@ class _HalamanDetailState extends State<HalamanDetail> {
 
             // ═══ [INPUT-PORSI] ═════════════════════════════
             // Tampilan: Kotak input angka "Jumlah (porsi)"
-            // Copas: Ambil dari TextField sampai AKHIR INPUT-PORSI
             // Syarat: Butuh _kontrolerPorsi (TextEditingController)
             //         Butuh _porsiSaatIni (int) + setState
             // ════════════════════════════════════════════════
+            // ✂️ MULAI COPAS FIELD INPUT PORSI DARI SINI
             TextField(
               controller: _kontrolerPorsi,      // ← VARIABEL: controller input
               keyboardType: TextInputType.number,
@@ -210,7 +219,8 @@ class _HalamanDetailState extends State<HalamanDetail> {
                 });
               },
             ),
-            // ═══ AKHIR [INPUT-PORSI] ═══════════════════════
+            // ✂️ AKHIR COPAS FIELD INPUT PORSI SAMPAI SINI
+            // ════════════════════════════════════════════════
 
 
 
@@ -234,10 +244,10 @@ class _HalamanDetailState extends State<HalamanDetail> {
 
             // ═══ [HITUNG-TOTAL] ════════════════════════════
             // Tampilan: Baris "Total" di kiri + "Rp xx.xxx" di kanan
-            // Copas: Ambil dari Row sampai AKHIR HITUNG-TOTAL
             // Proses hitung: _totalHarga = _porsiSaatIni × widget.makanan.price
             //   (didefinisikan di getter _totalHarga di atas class ini)
             // ════════════════════════════════════════════════
+            // ✂️ MULAI COPAS BARIS HITUNG TOTAL DARI SINI
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -248,7 +258,8 @@ class _HalamanDetailState extends State<HalamanDetail> {
                 ),
               ],
             ),
-            // ═══ AKHIR [HITUNG-TOTAL] ══════════════════════
+            // ✂️ AKHIR COPAS BARIS HITUNG TOTAL SAMPAI SINI
+            // ════════════════════════════════════════════════
 
 
 
@@ -272,9 +283,9 @@ class _HalamanDetailState extends State<HalamanDetail> {
 
             // ═══ [TOMBOL-SIMPAN] ═══════════════════════════
             // Tampilan: Tombol oranye penuh "Simpan Pemesanan"
-            // Copas: Ambil dari SizedBox sampai AKHIR TOMBOL-SIMPAN
             // Aksi: Validasi → SnackBar → Navigator.pop (kirim data balik)
             // ════════════════════════════════════════════════
+            // ✂️ MULAI COPAS TOMBOL SIMPAN DARI SINI
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -296,7 +307,8 @@ class _HalamanDetailState extends State<HalamanDetail> {
                 ),
               ),
             ),
-            // ═══ AKHIR [TOMBOL-SIMPAN] ═════════════════════
+            // ✂️ AKHIR COPAS TOMBOL SIMPAN SAMPAI SINI
+            // ════════════════════════════════════════════════
 
 
 
