@@ -60,6 +60,8 @@ class _HalamanDetailState extends State<HalamanDetail> {
     return Scaffold(
       backgroundColor: Color(0xFFF9F4EE),
 
+
+      // ─── WIDGET: AppBar ───
       appBar: AppBar(
         title: Text(
           widget.makanan.name,
@@ -70,13 +72,21 @@ class _HalamanDetailState extends State<HalamanDetail> {
         centerTitle: true,
       ),
 
+
+
+      // ─── WIDGET: Body Utama ───
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
 
+
+        // ─── WIDGET: Column Konten ───
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
 
           children: [
+            
+            
+            // ─── WIDGET: Gambar Besar ───
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
               child: Image.network(
@@ -95,8 +105,13 @@ class _HalamanDetailState extends State<HalamanDetail> {
               ),
             ),
 
+
+
             SizedBox(height: 20),
 
+
+
+            // ─── WIDGET: Judul Detail ───
             Text(
               widget.makanan.name,
               style: TextStyle(
@@ -106,8 +121,13 @@ class _HalamanDetailState extends State<HalamanDetail> {
               ),
             ),
 
+
+
             SizedBox(height: 4),
 
+
+
+            // ─── WIDGET: Harga Detail ───
             Text(
               widget.makanan.hargaFormatted,
               style: TextStyle(
@@ -117,8 +137,13 @@ class _HalamanDetailState extends State<HalamanDetail> {
               ),
             ),
 
+
+
             SizedBox(height: 12),
 
+
+
+            // ─── WIDGET: Deskripsi Detail ───
             Text(
               widget.makanan.description,
               style: TextStyle(
@@ -128,8 +153,13 @@ class _HalamanDetailState extends State<HalamanDetail> {
               ),
             ),
 
+
+
             SizedBox(height: 24),
 
+
+
+            // ─── WIDGET: Input Field Porsi ───
             TextField(
               controller: _kontrolerPorsi,
               keyboardType: TextInputType.number,
@@ -158,11 +188,19 @@ class _HalamanDetailState extends State<HalamanDetail> {
               },
             ),
 
+
+
             SizedBox(height: 20),
 
+
+
+            // ─── WIDGET: Baris Hitung Total ───
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                
+                
+                // ─── WIDGET: Teks Total ───
                 Text(
                   'Total',
                   style: TextStyle(
@@ -172,6 +210,9 @@ class _HalamanDetailState extends State<HalamanDetail> {
                   ),
                 ),
 
+
+
+                // ─── WIDGET: Nominal Total ───
                 Text(
                   _porsiSaatIni > 0 ? 'Rp ${formatHarga(_totalHarga)}' : 'Rp 0',
                   style: TextStyle(
@@ -180,11 +221,18 @@ class _HalamanDetailState extends State<HalamanDetail> {
                     color: Colors.green,
                   ),
                 ),
+                
+                
               ],
             ),
 
+
+
             SizedBox(height: 30),
 
+
+
+            // ─── WIDGET: Tombol Simpan ───
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -197,6 +245,7 @@ class _HalamanDetailState extends State<HalamanDetail> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
+                
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -211,8 +260,11 @@ class _HalamanDetailState extends State<HalamanDetail> {
                     ),
                   ],
                 ),
+                
               ),
             ),
+            
+            
           ],
         ),
       ),

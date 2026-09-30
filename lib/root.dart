@@ -22,31 +22,49 @@ class _RootHalamanState extends State<RootHalaman> {
   Widget build(BuildContext context) {
     final List<Widget> daftarHalaman = [
       HalamanBeranda(),
-
       HalamanProfil(onPindahKeMenu: _pindahKeMenu),
     ];
 
     return Scaffold(
+      
+      
+      // ─── WIDGET: Body Navigasi ───
       body: daftarHalaman[_indeksHalaman],
 
+
+
+      // ─── WIDGET: Bottom Navigation Bar ───
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _indeksHalaman,
         selectedItemColor: Color(0xFFE07B39),
         unselectedItemColor: Colors.grey,
         backgroundColor: Colors.white,
+        
         onTap: (indeks) {
           setState(() {
             _indeksHalaman = indeks;
           });
         },
 
+
         items: const [
+          
+          
+          // ─── WIDGET: Tab Menu ───
           BottomNavigationBarItem(
             icon: Icon(Icons.restaurant_menu),
             label: 'Menu',
           ),
 
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profil'),
+
+
+          // ─── WIDGET: Tab Profil ───
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person), 
+            label: 'Profil'
+          ),
+          
+          
         ],
       ),
     );

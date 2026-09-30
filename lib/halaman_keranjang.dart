@@ -6,6 +6,8 @@ class HalamanKeranjang extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+    // ─── WIDGET: Logika Data ───
     final List<FoodItem> daftarPesanan = FoodItem.daftarMakanan
         .where((makanan) => makanan.quantity > 0)
         .toList();
@@ -15,9 +17,14 @@ class HalamanKeranjang extends StatelessWidget {
       (jumlah, makanan) => jumlah + makanan.totalHarga,
     );
 
+
+
     return Scaffold(
       backgroundColor: Color(0xFFF9F4EE),
 
+
+
+      // ─── WIDGET: AppBar ───
       appBar: AppBar(
         title: Text(
           'Keranjang Pesanan',
@@ -28,17 +35,30 @@ class HalamanKeranjang extends StatelessWidget {
         centerTitle: true,
       ),
 
+
+
+      // ─── WIDGET: Body Utama ───
       body: daftarPesanan.isEmpty
           ? Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  
+                  
+                  // ─── WIDGET: Ikon Kosong ───
                   Icon(
                     Icons.shopping_cart_outlined,
                     size: 80,
                     color: Colors.grey[400],
                   ),
+
+
+
                   SizedBox(height: 16),
+
+
+
+                  // ─── WIDGET: Teks Kosong ───
                   Text(
                     'Belum ada pesanan',
                     style: TextStyle(
@@ -47,16 +67,29 @@ class HalamanKeranjang extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
+
+
+
                   SizedBox(height: 8),
+
+
+
+                  // ─── WIDGET: Petunjuk Teks ───
                   Text(
                     'Pesan makanan dari halaman Menu',
                     style: TextStyle(fontSize: 13, color: Colors.grey[400]),
                   ),
+
+
+
                 ],
               ),
             )
           : Column(
               children: [
+                
+                
+                // ─── WIDGET: Daftar Pesanan ───
                 Expanded(
                   child: ListView.builder(
                     padding: EdgeInsets.all(12),
@@ -64,6 +97,9 @@ class HalamanKeranjang extends StatelessWidget {
                     itemBuilder: (context, indeks) {
                       final makanan = daftarPesanan[indeks];
 
+
+
+                      // ─── WIDGET: Kartu Item ───
                       return Container(
                         margin: EdgeInsets.only(bottom: 10),
                         padding: EdgeInsets.all(12),
@@ -81,6 +117,10 @@ class HalamanKeranjang extends StatelessWidget {
 
                         child: Row(
                           children: [
+
+
+
+                            // ─── WIDGET: Gambar Makanan ───
                             ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.network(
@@ -100,8 +140,13 @@ class HalamanKeranjang extends StatelessWidget {
                               ),
                             ),
 
+
+
                             SizedBox(width: 12),
 
+
+
+                            // ─── WIDGET: Info Makanan ───
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -127,6 +172,9 @@ class HalamanKeranjang extends StatelessWidget {
                               ),
                             ),
 
+
+
+                            // ─── WIDGET: Total per Item ───
                             Text(
                               makanan.totalFormatted,
                               style: TextStyle(
@@ -135,6 +183,9 @@ class HalamanKeranjang extends StatelessWidget {
                                 color: Colors.green,
                               ),
                             ),
+
+
+
                           ],
                         ),
                       );
@@ -142,6 +193,9 @@ class HalamanKeranjang extends StatelessWidget {
                   ),
                 ),
 
+
+
+                // ─── WIDGET: Total dan Tombol Pesan ───
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                   decoration: BoxDecoration(
@@ -161,6 +215,10 @@ class HalamanKeranjang extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+
+
+
+                      // ─── WIDGET: Baris Total Keseluruhan ───
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -183,8 +241,13 @@ class HalamanKeranjang extends StatelessWidget {
                         ],
                       ),
 
+
+
                       SizedBox(height: 12),
 
+
+
+                      // ─── WIDGET: Tombol Konfirmasi ───
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
@@ -215,9 +278,15 @@ class HalamanKeranjang extends StatelessWidget {
                           ),
                         ),
                       ),
+
+
+
                     ],
                   ),
                 ),
+
+
+
               ],
             ),
     );

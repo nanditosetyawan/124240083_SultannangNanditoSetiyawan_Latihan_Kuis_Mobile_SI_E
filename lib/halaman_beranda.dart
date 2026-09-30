@@ -30,6 +30,9 @@ class _HalamanBerandaState extends State<HalamanBeranda> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
+      
+      // ─── WIDGET: AppBar ───
       appBar: AppBar(
         title: const Text(
           'Menu Resto',
@@ -40,18 +43,27 @@ class _HalamanBerandaState extends State<HalamanBeranda> {
         elevation: 0,
       ),
 
+
+
       backgroundColor: Color(0xFFF9F4EE),
 
+
+
+      // ─── WIDGET: Daftar Makanan ───
       body: ListView.builder(
         padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         itemCount: _daftarMakanan.length,
         itemBuilder: (context, indeks) {
           final makanan = _daftarMakanan[indeks];
 
+
+          // ─── WIDGET: Kartu Makanan Pembungkus ───
           return _KartuMakanan(
             makanan: makanan,
             onKlik: () => _bukaHalamanDetail(makanan),
           );
+          
+          
         },
       ),
     );
@@ -66,9 +78,14 @@ class _KartuMakanan extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+    
+    // ─── WIDGET: GestureDetector ───
     return GestureDetector(
       onTap: onKlik,
 
+
+      // ─── WIDGET: Container Kartu ───
       child: Container(
         margin: EdgeInsets.only(bottom: 10),
         padding: EdgeInsets.all(12),
@@ -84,10 +101,15 @@ class _KartuMakanan extends StatelessWidget {
           ],
         ),
 
+
+        // ─── WIDGET: Row Konten Kartu ───
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
 
           children: [
+            
+            
+            // ─── WIDGET: Gambar Makanan ───
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Image.network(
@@ -106,13 +128,21 @@ class _KartuMakanan extends StatelessWidget {
               ),
             ),
 
+
+
             SizedBox(width: 12),
 
+
+
+            // ─── WIDGET: Info Makanan ───
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
 
                 children: [
+                  
+                  
+                  // ─── WIDGET: Nama Makanan ───
                   Text(
                     makanan.name,
                     style: TextStyle(
@@ -122,8 +152,13 @@ class _KartuMakanan extends StatelessWidget {
                     ),
                   ),
 
+
+
                   SizedBox(height: 4),
 
+
+
+                  // ─── WIDGET: Deskripsi Makanan ───
                   Text(
                     makanan.description,
                     style: TextStyle(fontSize: 12, color: Colors.grey),
@@ -131,11 +166,19 @@ class _KartuMakanan extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
 
+
+
                   SizedBox(height: 6),
 
+
+
+                  // ─── WIDGET: Baris Porsi & Total ───
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      
+                      
+                      // ─── WIDGET: Teks Porsi ───
                       Text(
                         '${makanan.quantity} porsi',
                         style: TextStyle(
@@ -148,6 +191,9 @@ class _KartuMakanan extends StatelessWidget {
                         ),
                       ),
 
+
+
+                      // ─── WIDGET: Teks Total Harga ───
                       Text(
                         makanan.quantity > 0 ? makanan.totalFormatted : 'Rp 0',
                         style: TextStyle(
@@ -156,18 +202,29 @@ class _KartuMakanan extends StatelessWidget {
                           color: Colors.green,
                         ),
                       ),
+                      
+                      
                     ],
                   ),
 
+
+
                   SizedBox(height: 2),
 
+
+
+                  // ─── WIDGET: Harga Satuan ───
                   Text(
                     makanan.hargaFormatted,
                     style: TextStyle(fontSize: 11, color: Colors.grey),
                   ),
+                  
+                  
                 ],
               ),
             ),
+            
+            
           ],
         ),
       ),

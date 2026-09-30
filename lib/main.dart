@@ -12,16 +12,27 @@ class AplikasiResto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      
       title: 'Aplikasi Pemesanan Resto',
+
+
 
       debugShowCheckedModeBanner: false,
 
+
+
+      // ─── WIDGET: Tema Aplikasi ───
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFFE07B39)),
         useMaterial3: true,
       ),
 
+
+
+      // ─── WIDGET: Halaman Utama ───
       home: RootHalaman(),
+      
+      
     );
   }
 }
